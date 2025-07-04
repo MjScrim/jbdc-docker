@@ -1,11 +1,12 @@
-FROM postgres:15
+FROM maven:3.9.6-eclipse-temurin-17 as build
 
-ENV POSTGRES_USER=root
-ENV POSTGRES_PASSWORD=root
-ENV POSTGRES_DB=jdbcDB
+WORKDIR /app
+COPY . /app
+RUN mvn clean package -DskipTests
 
-COPY init.sql /docker-entrypoint-initdb.d/init.sql
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
 
-EXPOSE 5432
+COPY --from=build /app/target/jdbc-docker-1.0-SNAPSHOT-jar-with-dependencies.jar app.jar
 
-
+CMD ["java", "-jar", "app.jar"]
