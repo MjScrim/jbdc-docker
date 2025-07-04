@@ -6,11 +6,11 @@ A ideia principal é automatizar tudo com Docker e deixar o Java se comunicar co
 
 ---
 
-## Dockerfile + init.sql
+## docker-compose + init.sql
 
-O banco de dados PostgreSQL é criado a partir de um `Dockerfile` personalizado.
+O banco de dados PostgreSQL é criado a partir de um `docker-compose.yml` personalizado.
 
-Esse `Dockerfile` copia o script `init.sql`, que é executado automaticamente ao iniciar o container. Isso garante que a tabela necessária já esteja pronta.
+Esse `docker-compose.yml` copia o script `init.sql`, que é executado automaticamente ao iniciar o container. Isso garante que a tabela necessária já esteja pronta.
 
 ---
 
@@ -21,11 +21,10 @@ Esse `Dockerfile` copia o script `init.sql`, que é executado automaticamente ao
 Abra o terminal na pasta do projeto e rode:
 
 ```bash
-docker build -t postgres-com-tabela .
-docker run -d --name meu-postgres -p 5432:5432 postgres-com-tabela
+docker-copmpose up --build
 ```
 
-### 2. Executando o código java via .jar
+### 2. Executando o código java separadamente fora do Docker via .jar
 
 Abra o terminal na pasta do projeto e rode:
 
