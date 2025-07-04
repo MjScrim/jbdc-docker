@@ -18,9 +18,3 @@ services:
     container_name: app-java
     depends_on:
       - db
-    environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_NAME: jdbcDB
-      DB_USER: root
-      DB_PASS: root
