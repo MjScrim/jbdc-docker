@@ -16,7 +16,7 @@ Esse `docker-compose.yml` copia o script `init.sql`, que é executado automatica
 
 ## Como executar
 
-### 1. Suba o banco PostgreSQL
+### 1. Suba o banco PostgreSQL, e execute o projeto Java
 
 Abra o terminal na pasta do projeto e rode:
 
@@ -24,7 +24,7 @@ Abra o terminal na pasta do projeto e rode:
 docker-copmpose up --build
 ```
 
-### 2. Executando o código java separadamente fora do Docker via .jar
+### 2. Executando o código Java separadamente fora do Docker via .jar
 
 Abra o terminal na pasta do projeto e rode:
 
