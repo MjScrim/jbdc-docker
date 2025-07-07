@@ -9,10 +9,16 @@ import java.util.List;
 
 public class UserService {
 
+  private Database database;
+
+  public void setDatabase(Database database) {
+    this.database = database;
+  }
+
   public void insertUser(User user) {
     String sql = "INSERT INTO users (name) VALUES (?)";
 
-    try (Connection connection = Database.getConnection(); PreparedStatement stmt = connection.prepareStatement(sql)) {
+    try (Connection connection = database.getConnection(); PreparedStatement stmt = connection.prepareStatement(sql)) {
       stmt.setString(1, user.getName());
       stmt.executeUpdate();
     } catch (SQLException e) {
@@ -25,7 +31,7 @@ public class UserService {
 
     String sql = "SELECT * FROM users";
 
-    try (Connection connection = Database.getConnection();
+    try (Connection connection = database.getConnection();
          Statement stmt = connection.createStatement();
          ResultSet result = stmt.executeQuery(sql)) {
 

@@ -1,17 +1,19 @@
 package org.example.db;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Database {
 
-  private static final String url = "jdbc:postgresql://db:5432/jdbcDB";
-  private static final String user = "root";
-  private static final String pass = "root";
+  private DataSource dataSource;
 
-  public static Connection getConnection() throws SQLException {
-    return DriverManager.getConnection(url, user, pass);
+  public void setDataSource(DataSource dataSource) {
+    this.dataSource = dataSource;
+  }
+
+  public Connection getConnection() throws SQLException {
+    return dataSource.getConnection();
   }
 
 }
