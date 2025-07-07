@@ -1,17 +1,17 @@
 package org.example;
 
-import org.example.db.Database;
+import org.example.config.AppConfig;
 import org.example.model.User;
 import org.example.service.UserService;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
 
   public static void main(String[] args) {
-    ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+    ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-    UserService service = context.getBean("userService", UserService.class);
+    UserService service = context.getBean(UserService.class);
 
     service.insertUser(new User("MjScrim"));
 

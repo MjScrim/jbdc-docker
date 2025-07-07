@@ -1,14 +1,19 @@
-package org.example.db;
+package org.example.repository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+@Component
 public class Database {
 
-  private DataSource dataSource;
+  @Autowired
+  private final DataSource dataSource;
 
-  public void setDataSource(DataSource dataSource) {
+  public Database(DataSource dataSource) {
     this.dataSource = dataSource;
   }
 

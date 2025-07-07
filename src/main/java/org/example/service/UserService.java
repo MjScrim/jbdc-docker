@@ -1,17 +1,21 @@
 package org.example.service;
 
-import org.example.db.Database;
+import org.example.repository.Database;
 import org.example.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class UserService {
 
-  private Database database;
+  @Autowired
+  private final Database database;
 
-  public void setDatabase(Database database) {
+  public UserService(Database database) {
     this.database = database;
   }
 
