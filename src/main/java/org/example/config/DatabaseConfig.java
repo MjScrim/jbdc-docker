@@ -29,8 +29,6 @@ public class DatabaseConfig {
 
   @Bean(destroyMethod = "close")
   public DataSource dataSource() {
-    System.out.println(driver);
-
     BasicDataSource dataSource = new BasicDataSource();
     dataSource.setDriverClassName(driver);
     dataSource.setUrl(url);
